@@ -2,6 +2,7 @@ import { getPosts, postItem, posts } from "@/scripts/posts";
 import { Heart } from "lucide-react";
 import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 // async function getMorePosts(cursorDate:Date) {
@@ -53,7 +54,13 @@ export default function Home({
     return (
         <main className="flex flex-col gap-y-5">
             {postData?.items.map((post) => (
-                <Post data={post} key={post.id} />
+                <Link
+                    href={`/post/${post.id}`}
+                    key={post.id}
+                    className="rounded-lg transition hover:cursor-pointer hover:bg-gray-50"
+                >
+                    <Post data={post} />
+                </Link>
             ))}
             {postData.hasMore && <p ref={LoadingElement}>Loading</p>}
         </main>
@@ -62,7 +69,7 @@ export default function Home({
 
 function Post({ data }: { data: postItem }) {
     return (
-        <article className="w-117">
+        <article className="w-full md:w-117">
             <div className="p-3">
                 <p>{data.author}</p>
             </div>
@@ -94,7 +101,7 @@ function Post({ data }: { data: postItem }) {
 export async function getServerSideProps() {
     const emptyIntialPosts: posts = {
         items: [],
-        nextCursor: "",
+        nextCursor: new Date(0),
         hasMore: false,
     };
 

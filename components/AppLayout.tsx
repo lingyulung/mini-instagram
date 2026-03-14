@@ -14,10 +14,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 <Link href="/" className="hidden p-3 md:block">
                     <SiInstagram size={24} />
                 </Link>
-                <div className="flex flex-1 items-center justify-center gap-1 md:flex-col md:items-start">
+                <div className="flex w-12 flex-1 items-center justify-center gap-1 overflow-x-hidden hover:w-auto md:flex-col md:items-start">
                     <Link
                         href="/"
-                        className="w-12 overflow-hidden rounded-lg p-3 transition hover:w-auto hover:bg-gray-200"
+                        className="overflow-hidden rounded-lg p-3 transition hover:bg-gray-200"
                     >
                         <div className="flex w-fit items-center gap-x-3">
                             <House size={24} />
@@ -26,7 +26,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                     </Link>
                     <Link
                         href="/explore"
-                        className="w-12 overflow-hidden rounded-lg p-3 transition hover:w-auto hover:bg-gray-200"
+                        className="overflow-hidden rounded-lg p-3 transition hover:bg-gray-200"
                     >
                         <div className="flex w-fit items-center gap-x-3">
                             <Compass size={24} />
@@ -34,8 +34,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                         </div>
                     </Link>
                     <Link
-                        href="#"
-                        className="w-12 overflow-hidden rounded-lg p-3 transition hover:w-auto hover:bg-gray-200"
+                        href="/create"
+                        className="overflow-hidden rounded-lg p-3 transition hover:bg-gray-200"
                     >
                         <div className="flex w-fit items-center gap-x-3">
                             <Plus size={24} />
@@ -44,9 +44,9 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                     </Link>
                 </div>
             </nav>
-            <div className="flex-1 p-3">
+            <div className="relative h-[calc(100vh-73px)] flex-1 overflow-y-auto p-3 md:h-full md:overflow-y-auto">
                 <div
-                    className={`w-full md:mx-auto md:w-fit ${isPostDetailsPage ? "" : "md:max-w-[60.188rem]"}`}
+                    className={`w-full md:mx-auto md:h-full md:w-fit ${isPostDetailsPage ? "" : "md:max-w-[60.188rem]"}`}
                 >
                     {children}
                 </div>
